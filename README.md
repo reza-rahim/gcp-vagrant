@@ -12,3 +12,16 @@ gcloud beta compute --project=redislabs-sa-training-services instances create vb
 
 gcloud beta compute ssh --zone "us-central1-a" "kvm-centos" --project "redislabs-sa-training-services"
 ```
+
+```bash
+###virtual box
+https://wiki.centos.org/HowTos/Virtualization/VirtualBox
+## complie kernel module
+yum install "kernel-devel-uname-r == $(uname -r)"
+/sbin/vboxconfig
+ 
+### vagrant
+https://linuxize.com/post/how-to-install-vagrant-on-centos-7/
+sudo yum install https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_x86_64.rpm
+
+```
