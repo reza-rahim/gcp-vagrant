@@ -12,6 +12,9 @@ chown -R vagrant:vagrant /home/vagrant/.ssh/id_rsa
 chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
 chmod 600 /home/vagrant/.ssh/id_rsa
 
+sudo mkdir -p /root/.ssh
+sudo bash -c 'cat  /vagrant/scripts/authorized_keys >> /root/.ssh/authorized_keys'
+
 # configure hosts file for our internal network defined by Vagrantfile
 cat > /etc/hosts <<EOL
 
