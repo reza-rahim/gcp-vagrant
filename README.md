@@ -25,3 +25,12 @@ https://linuxize.com/post/how-to-install-vagrant-on-centos-7/
 sudo yum install https://releases.hashicorp.com/vagrant/2.2.6/vagrant_2.2.6_x86_64.rpm
 
 ```
+
+
+```bash
+### GCP instance
+gcloud beta compute --project=redislabs-sa-training-services instances create centos7-vagrant --zone=us-central1-a --machine-type=n1-standard-4 --subnet=subnet --network-tier=PREMIUM --maintenance-policy=MIGRATE --service-account=37346316774-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/trace.append --image=centos7-vagrant --image-project=redislabs-sa-training-services --boot-disk-size=100GB --boot-disk-type=pd-standard --boot-disk-device-name=instance-1 --reservation-affinity=any
+
+gcloud beta compute ssh --zone "us-central1-a" "centos7-vagrant" --project "redislabs-sa-training-services"
+```
+
