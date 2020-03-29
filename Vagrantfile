@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
   config.vm.define :mgmt do |mgmt_config|
       mgmt_config.vm.box = "bento/centos-7.6"
       mgmt_config.vm.hostname = "mgmt"
-      mgmt_config.vm.network :private_network, ip: "192.168.50.0"
+      mgmt_config.vm.network :private_network, ip: "192.168.50.1"
       mgmt_config.vm.provider "virtualbox" do |vb|
         #vb.memory = "1024"
         #vb.cpus = "2"
@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
   end
   
   # https://docs.vagrantup.com/v2/vagrantfile/tips.html
-  (1..3).each do |i|
+  (2..4).each do |i|
     config.vm.define "node#{i}" do |node|
         node.vm.box = "bento/centos-7.6"
         node.vm.hostname = "node#{i}"
