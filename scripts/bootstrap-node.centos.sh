@@ -2,27 +2,30 @@
 
 #cat  /vagrant/scripts/authorized_keys >> /home/vagrant/.ssh/authorized_keys
 
-sudo mkdir /root/.ssh
-cat  /vagrant/scripts/authorized_keys >> /root/.ssh/authorized_keys
+sudo mkdir -p /home/vagrant/.ssh
+cat  /vagrant/scripts/authorized_keys >> /home/vagrant/.ssh/authorized_keys
 
-cat >> /root/.ssh/config <<EOL
-Host *
-  StrictHostKeyChecking no
-EOL
+cp -a /vagrant/scripts/id_rsa /home/vagrant/.ssh/id_rsa
+cat  /vagrant/scripts/authorized_keys >> /home/vagrant/.ssh/authorized_keys
+
+chown -R vagrant:vagrant /home/vagrant/.ssh/id_rsa
+chown -R vagrant:vagrant /home/vagrant/.ssh/authorized_keys
+chmod 600 /home/vagrant/.ssh/id_rsa
 
 # configure hosts file for our internal network defined by Vagrantfile
 cat > /etc/hosts <<EOL
 
 # vagrant environment nodes
 127.0.0.1   localhost
-10.0.15.10  mgmt  dckreg
-10.0.15.11  node1 api
-10.0.15.12  node2
-10.0.15.13  node3
-10.0.15.14  node4
-10.0.15.15  node5
-10.0.15.16  node6
-10.0.15.17  node7
+
+192.168.50.2  node2
+192.168.50.3  node3
+192.168.50.4  node4
+192.168.50.5  node5
+192.168.50.6  node6
+192.168.50.7  node7
+192.168.50.8  node8
+192.168.50.9  node9
 EOL
 
-sudo echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
+#sudo echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
